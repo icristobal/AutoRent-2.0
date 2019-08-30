@@ -1,0 +1,43 @@
+.pt-150{
+  padding-top: 150px;
+}
+
+.div-ctr{
+  margin: 0 auto;
+}
+
+.contr {
+  position: relative;
+  text-align: center;
+  margin-top: -200px;
+  background-color: #000000;
+}
+
+.contr img{ opacity: 0.5; }
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: white;
+}
+
+.wc-btn{
+  background-color: #4CAF50;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  border-radius: 500px;
+}
+
+.drv-btn{
+  width: 100px;
+  height: 100px;
+}
