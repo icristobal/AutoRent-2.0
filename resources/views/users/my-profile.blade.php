@@ -3,9 +3,14 @@
 
 @section('content')
 <div class="container">
+        <div class="float-left m-3">
+                <h3>My Profile</h3>
+            </div>
 	<div class="text-right m-3">
-		<a class="btn btn-primary" href="{{ route('changepass') }}">Change Password</a>
-	</div>
+        <a class="btn btn-primary" href="{{ route('changepass') }}">Change Password</a>
+        <a class="btn btn-primary" href="{{ route('upage-show') }}">Change Profile Photo</a>
+    </div>
+    <hr>
     <div class="card">
     	@foreach($user as $me)
     	<div class="card-body">
