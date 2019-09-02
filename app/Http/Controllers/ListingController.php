@@ -22,7 +22,7 @@ class ListingController extends Controller
             ->join('cars','cars.driver_id', '=', 'listings.driver_id')
             ->join('cities','cities.city_id','=','listings.city_id')
             ->select('listings.*','users.name','cars.*')
-            ->where('listings.listing_status', '0') //select only 0 status listings
+            ->where('listings.listing_status', '1') //select only 0 status listings
             ->get();
         
         return view('users.findcar', compact('data'));
@@ -83,6 +83,6 @@ class ListingController extends Controller
 
         $transactions->save();
 
-        return back();  
+        return back()->with('message', 'Sucessfully filed your request. Please wait for your reservation to be approved by the driver!');;  
     }
 }

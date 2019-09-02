@@ -42,7 +42,7 @@ class InsertListingsController extends Controller
         $rate = $request->get('rate');
         $city_id = $request->get('city_id');
         $notes = $request->get('notes');
-        $listing_status = 0;
+        $listing_status = 1;
 
         if ($file != null) {
             $contents = $file->openFile()->fread($file->getSize());
@@ -76,6 +76,6 @@ class InsertListingsController extends Controller
             ]);
           
         }
-         return redirect('driver/insertlist')->with('success','Successful');
+         return redirect('driver/insertlist')->with('success','Successfully Updated Listing!');
     }
 }

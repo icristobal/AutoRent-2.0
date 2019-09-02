@@ -6,6 +6,13 @@
 @section('content')
 
 <div class="container">
+
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
+
     <h3>My Car</h3>
     <hr>
     <div class="card">

@@ -81,6 +81,6 @@ class InsertCarController extends Controller
         );
         }
         
-       return redirect()->to('driver/insertcar');
+       return redirect()->to('driver/insertcar')->with('message', 'Updated Car Details Successfully!');
     }
 }

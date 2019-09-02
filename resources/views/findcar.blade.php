@@ -2,7 +2,6 @@
 @section('pagename', 'Find Car')
 @section('findcar', 'active')
 
-
 <div class="container">
     <h1 class="h1 float-left">Find Car</h1><a class="btn btn-primary float-right" href={{ url('user/search') }}>Search Car</a>
     <br><br>
@@ -23,3 +22,5 @@
         @endforeach
     </div>
 </div>
+
+<div class="mt-lg-5"></div>

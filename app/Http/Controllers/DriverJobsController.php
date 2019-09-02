@@ -52,7 +52,7 @@ class DriverJobsController extends Controller
             $transaction->save();
             $listing->save();
         }
-        return back();       
+        return back()->with('message','Accepted Job');       
     }
 
     public function postReject($id) {
@@ -65,7 +65,7 @@ class DriverJobsController extends Controller
             $transaction->save();
             $listing->save();
         }   
-        return back();    
+        return back()->with('message','Rejected Job');    
     }
 
     public function postDone($id) {
@@ -78,7 +78,7 @@ class DriverJobsController extends Controller
             $transaction->save();
             $listing->save();
         }   
-        return back();    
+        return back()->with('message','Job marked as DONE');    
     }
 
     public function postCancel($id) {
@@ -91,6 +91,6 @@ class DriverJobsController extends Controller
             $transaction->save();
             $listing->save();
         }   
-        return back();    
+        return back()->with('message','Cancelled Job');
     }
 }

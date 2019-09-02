@@ -4,6 +4,12 @@
 @section('pagename', 'Listing Details')
 
 <div class="container">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+         {{ session()->get('message') }}
+    </div>
+    @endif
+    
     <h2>{{$data->listing_title}}</h2>
     <hr>
     <div class="float-left w-50">
