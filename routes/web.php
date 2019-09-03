@@ -62,12 +62,13 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/home', 'UserController@index')->name('user-home');
 			Route::get('/about-us', 'UserController@aboutus')->name('about-us');
 			Route::get('/contact-us', 'UserController@contactus')->name('contact-us');
+			#Find Car
 			Route::resource('/findcar', 'ListingController');
 			Route::get('/findcar/{id}','ListingController@show')->name('cardetails');
 			Route::get('/my-transactions','TxnHistoryController@user')->name('user-txn');
 			Route::resource('/search','UserSearchController');
 			Route::get('/s-result','UserSearchController@search')->name('s-result');
-
+			Route::post('/my-transactions/{id}','TxnHistoryController@cancelTxn')->name('canceltxn');
 			#My Profile Routes
 			Route::resource('/my-profile','UserProfileController');
 			Route::get('/changepass','UserProfileController@showChangePassword')->name('changepass');
