@@ -21,7 +21,13 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-                <img class="img-profile rounded-circle" src="data:image/png;base64,{{ chunk_split(base64_encode(Auth::user()->display_image)) }}">
+            <img class="img-profile rounded-circle" 
+                @if(Auth::user()->display_image != null)
+                src="data:image/png;base64,{{ chunk_split(base64_encode(Auth::user()->display_image)) }}"
+                @else
+                src="https://i.stack.imgur.com/34AD2.jpg"
+                @endif
+            >
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}
                 </a>

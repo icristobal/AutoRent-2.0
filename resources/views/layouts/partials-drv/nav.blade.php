@@ -68,7 +68,13 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
-                            <img class="img-profile rounded-circle" src="data:image/png;base64,{{ chunk_split(base64_encode(Auth::user()->display_image)) }}">
+                            <img class="img-profile rounded-circle" 
+                                @if(Auth::user()->display_image != null)
+                                src="data:image/png;base64,{{ chunk_split(base64_encode(Auth::user()->display_image)) }}"
+                                @else
+                                src="https://i.stack.imgur.com/34AD2.jpg"
+                                @endif
+                            >
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
