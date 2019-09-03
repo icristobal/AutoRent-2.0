@@ -26,6 +26,7 @@ class TxnHistoryController extends Controller
         $data = DB::table('listings')
             ->join('transactions','transactions.listing_id', '=', 'listings.listing_id',)
             ->select('listings.*','transactions.*')
+            ->where('transactions.status', '!=', 1)->orWhereNull('transactions.status')
             ->get();
         $current = DB::table('listings')
             ->join('transactions','transactions.listing_id', '=', 'listings.listing_id',)
