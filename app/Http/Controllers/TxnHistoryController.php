@@ -63,4 +63,14 @@ class TxnHistoryController extends Controller
         }
         return view('drivers.my-transactions', compact('listing'));
     }
+
+    public function cancelTxn($id) {
+        $transaction = Transactions::where('txn_id', '=', $id)->first();
+        if($transaction)
+        {
+            $transaction->status = '5';
+            $transaction->save();
+        }   
+        return back()->with('message','Cancelled');    
+    }
 }
