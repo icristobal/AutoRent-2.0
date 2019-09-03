@@ -36,6 +36,7 @@ class UserController extends Controller
             ->join('cars','cars.driver_id', '=', 'listings.driver_id')
             ->join('cities','cities.city_id','=','listings.city_id')
             ->select('listings.*','users.name','cars.*')
+            ->where('listings.listing_status', '1')
             ->get();
         return view('findcar', compact('data'));
     }
