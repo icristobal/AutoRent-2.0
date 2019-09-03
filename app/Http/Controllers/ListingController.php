@@ -60,7 +60,7 @@ class ListingController extends Controller
         ->join('users','users.id','=','listings.driver_id')
         ->select('listings.*','cars.*','users.*')
         ->where('listing_id','=', $id)->first();
-        $existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '!=', '2')->orWhereNull('status')->first();
+        $existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '=', '2')->first();
         
         $service_total = $data->rate * $service_rate;
         $service_charge = array('service_total'=>$service_total);

@@ -75,7 +75,7 @@
                         <br>
                         <label>PHP {{$service_charge['service_total']}}</label>
                     </div>
-                    @if($existTxn == null)
+                    @if($existTxn != null)
                     <div class="alert-danger p-3">You cannot reserve this listing since you have a pending reservation.</div>
                     @else
                     <form method="post" action= "{{ route('findcar.store') }}">
