@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/user/home';
+    
 
     /**
      * Create a new controller instance.
@@ -75,5 +76,17 @@ class RegisterController extends Controller
             'contact_number'=>$data['contact_number'],
             'usertype' => $data['role'],
         ]);
+    }
+
+    protected function redirectTo() {
+        if (Auth::user()->usertype == 1) { //user
+            return redirect('/user/home');
+        } else if (Auth::user()->usertype == 2) { //driver
+            return redirect('/driver/home');
+        } else if (Auth::user()->usertype == 3) { //admin
+            return redirect('/admin/home');
+        } else{ //illegal access
+            return redirect('/home');
+        }
     }
 }
