@@ -94,12 +94,12 @@
                     <div class="form-group">
                         <label>Date Start</label>
                         <br>
-                        <input class="datepicker form-control" name="rent_start" id="rent_start">
+                        <input class="datepicker custom-select" name="rent_start" id="rent_start" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Date End</label>
                         <br>
-                        <input class="datepicker form-control" name="rent_end" id="rent_end">
+                        <input class="datepicker custom-select" name="rent_end" id="rent_end" autocomplete="off">
                     </div>
                     <input type="submit" name="send" class="btn btn-primary" value="Send" />
                 </form>
