@@ -41,3 +41,12 @@
   width: 100px;
   height: 100px;
 }
+
+.img-profile{
+  height: 3rem;
+  width: 3rem
+}
+
+.rounded-circle {
+  border-radius: 50% !important
+}

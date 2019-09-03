@@ -21,6 +21,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+                <img class="img-profile rounded-circle" src="data:image/png;base64,{{ chunk_split(base64_encode(Auth::user()->display_image)) }}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}
                 </a>
