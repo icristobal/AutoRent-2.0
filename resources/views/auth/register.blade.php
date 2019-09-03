@@ -1,4 +1,5 @@
 @extends('layouts.l-gen')
+@section('pagename', 'Register')
 
 @section('content')
 

@@ -1,4 +1,5 @@
 @extends('layouts.l-gen')
+@section('pagename','Login')
 
 @section('content')
 <div class="container">
