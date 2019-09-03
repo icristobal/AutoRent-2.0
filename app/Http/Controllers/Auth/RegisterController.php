@@ -80,13 +80,13 @@ class RegisterController extends Controller
 
     protected function redirectTo() {
         if (Auth::user()->usertype == 1) { //user
-            return redirect('/user/home');
+            return'/user/home';
         } else if (Auth::user()->usertype == 2) { //driver
-            return redirect('/driver/home');
+            return'/driver/home';
         } else if (Auth::user()->usertype == 3) { //admin
-            return redirect('/admin/home');
+            return'/admin/home';
         } else{ //illegal access
-            return redirect('/home');
+            return'/home';
         }
     }
 }
