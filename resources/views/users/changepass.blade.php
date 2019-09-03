@@ -4,6 +4,12 @@
 <!-- Modal -->
 @section('content')
     <div class="container">
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                 {{ session()->get('message') }}
+            </div>
+        @endif
+
         <div class="text-right m-3">
             <a class="btn btn-primary" href="{{ route('my-profile.index') }}">< Back to My Profile</a>
         </div>
