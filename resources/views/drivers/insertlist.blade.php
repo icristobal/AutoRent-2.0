@@ -33,11 +33,22 @@
             <div class="form-group">
                 <label>Destination Areas Covered</label>
                 <select class="form-control" id="city_id" name="city_id">
+                    @if($listings != null)
+
                     @foreach($cities as $datacities)
                     <option value="{{$datacities->city_id}}" 
                         @if($datacities->city_id == $listings->city_id) selected @endif>
                         {{$datacities->city}}</option>
                     @endforeach
+
+                    @else
+
+                    @foreach($cities as $datacities)
+                    <option value="{{$datacities->city_id}}">
+                        {{$datacities->city}}</option>
+                    @endforeach
+
+                    @endif
                 </select>
             </div>
             <div class="form-group">
