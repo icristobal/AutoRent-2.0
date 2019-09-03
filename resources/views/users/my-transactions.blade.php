@@ -22,6 +22,11 @@
             <td class="font-weight-bold">End Date/Time</td>
             <td class="font-weight-bold">Cancel</td>
         </tr>
+        @if($current->isEmpty())
+        <tr>
+            <td colspan="6">No Current Transaction</td>
+        </tr>
+        @else
         @foreach($current as $transaction)
         <tr>
             <td>{{$transaction->listing_id}} - {{$transaction->listing_title}}</td>
@@ -39,6 +44,7 @@
             </td>
         </tr>    
         @endforeach
+        @endif
     </table>
 
     <hr>
@@ -52,6 +58,11 @@
             <td class="font-weight-bold">Start Date/Time</td>
             <td class="font-weight-bold">End Date/Time</td>
         </tr>
+        @if($data->isEmpty())
+        <tr>
+            <td colspan="6">No Transactions.</td>
+        </tr>
+        @else
         @foreach($data as $transaction)
         <tr>
             <td>{{$transaction->listing_id}} - {{$transaction->listing_title}}</td>
@@ -61,6 +72,7 @@
             <td>{{$transaction->rent_end}}</td>
         </tr>    
         @endforeach
+        @endif
     </table>
 </div>
 </div>
