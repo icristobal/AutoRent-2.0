@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $announcements = Announcements::where('user', '=', 1)->get();
+        $announcements = Announcements::where('user', '=', 1)->orderBy('created_at','DESC')->get();
         return view('users.home', compact('announcements'));
     }
 

@@ -60,6 +60,7 @@ class ListingController extends Controller
         ->join('users','users.id','=','listings.driver_id')
         ->select('listings.*','cars.*','users.*')
         ->where('listing_id','=', $id)->first();
+        //$existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '=', '4')->first();
         $existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '=', '2')->first();
         
         $service_total = $data->rate * $service_rate;
@@ -79,6 +80,7 @@ class ListingController extends Controller
         $transactions->rent_end = $request->get('rent_end');
         $transactions->pickup_address = $request->get('pick_up');
         $transactions->dropoff_address = $request->get('drop_off');  
+        $transactions->hasDriver = $request->get('hasdriver');
         $transactions->status = '2'; 
 
         $transactions->save();

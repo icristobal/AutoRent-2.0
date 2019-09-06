@@ -33,8 +33,13 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::prefix('driver')->group(function() {
 			Route::get('/home', 'DriverController@index')->name('driver-home');
 			Route::resource('/insertlist','InsertListingsController');
-			Route::resource('/insertcar','InsertCarController');
 			Route::resource('/my-jobs','DriverJobsController');
+			Route::get('/my-cars', 'InsertCarController@mycars');
+
+			#Car Management
+			Route::resource('/insertcar','InsertCarController');
+			Route::get('/my-cars/{id}','InsertCarController@getcar')->name('viewcar');
+			Route::post('/my-cars/{id}','InsertCarController@deletecar')->name('deletecar');
 
 			#Job Status
 			Route::post('/my-jobs/approve/{id}', 'DriverJobsController@postApprove')->name('approvetxn');

@@ -21,9 +21,9 @@
             Actions
         </div>
         <li class="nav-item @yield('car-manage-link')">
-            <a class="nav-link" href="{{ url('driver/insertcar') }}">
+            <a class="nav-link" href="{{ url('driver/my-cars') }}">
                 <i class="fas fa-car"></i>
-                <span>My Vehicle</span></a>
+                <span>My Cars</span></a>
         </li>
         <li class="nav-item @yield('ad-manage-link')">
             <a class="nav-link" href="{{ url('driver/insertlist') }}">

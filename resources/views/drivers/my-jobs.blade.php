@@ -67,11 +67,12 @@
             <td class="font-weight-bold w-25">Rent Start/End</td>
             <td class="font-weight-bold w-25">Pickup/Dropoff</td>
             <td class="font-weight-bold 2-25">Created</td>
+            <td class="font-weight-bold">Driver</td>
             <td class="font-weight-bold w-25">Action</td>
         </tr>
         @if($pjob->isEmpty())
         <tr>
-            <td colspan="7">None. (Yet.)</td>
+            <td colspan="8">None. (Yet.)</td>
         </tr>
         @else
         @foreach($pjob as $pjob)
@@ -80,7 +81,8 @@
             <td>{{$pjob->passenger_id}} - {{$pjob->name}}</td>
             <td>{{$pjob->rent_start}} -{{$pjob->rent_end}}</td>
             <td>{{$pjob->pickup_address}} - {{$pjob->dropoff_address}}</td>
-            <td>{{$pjob->created_at}}</td>
+            <td>{{ $pjob->created_at }}</td>
+            <td>{{ $pjob->hasDriver }}</td>
             <td>
                 <form method="post" action="{{ route('approvetxn', $pjob->txn_id) }}">
                     @csrf

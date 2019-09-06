@@ -45,6 +45,9 @@
                             <label>Seat Capacity</label>
                             <input type="text" name="capacity" class="form-control" @if($datacar != null) value="{{$datacar->capacity}} "@endif/>
                             <br>
+                            <label>Plate Number</label>
+                            <input type="text" name="plate_num" class="form-control" @if($datacar != null) value="{{$datacar->plate_number}} "@endif/>
+                            <br>
                             <label>Car Image</label>
                             <br>
                             <img @if($datacar != null) src="data:image/png;base64,{{ chunk_split(base64_encode($datacar->image)) }}" @endif width="300" height="200">

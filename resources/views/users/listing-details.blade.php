@@ -43,7 +43,7 @@
                 <br>
                 <label>{{$data->capacity}}</label>
             </div>
-            <img src="data:image/png;base64,{{ chunk_split(base64_encode($data->listing_image)) }}" width="300" height="245" class="ml-lg-5">
+            <img src="data:image/png;base64,{{ chunk_split(base64_encode($data->image)) }}" width="400" height="250" class="ml-lg-5">
         </div>
     </div>
     <div class="float-left w-50">
@@ -65,11 +65,6 @@
         <div class="card card-body">
             <div class="form-group">
                 <div class="container-fluid">
-                    <div class="form-group">
-                        <label>Rate</label>
-                        <br>
-                        <label>PHP {{$data->rate}}</label>
-                    </div>
                     <div class="form-group">
                         <label>Service Charge</label>
                         <br>
@@ -100,6 +95,14 @@
                         <label>Date End</label>
                         <br>
                         <input class="datepicker custom-select" name="rent_end" id="rent_end" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Include Driver?</label>
+                        <br>
+                        <select name="hasdriver" class="custom-select">
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
                     </div>
                     <input type="submit" name="send" class="btn btn-primary" value="Send" />
                 </form>

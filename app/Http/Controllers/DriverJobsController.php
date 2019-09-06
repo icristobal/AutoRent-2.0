@@ -39,6 +39,15 @@ class DriverJobsController extends Controller
             ->where('driver_id','=', Auth::user()->id)
             ->where('transactions.status', 2)
             ->get();
+
+        foreach($pjob as $pjb){
+            if($pjb->hasDriver == 1){
+                $pjb->hasDriver = "Yes";
+            }
+            else{
+                $pjb->hasDriver = "No";
+            }
+        }
         return view('drivers.my-jobs', compact('cjob', 'pjob','pending')); 
     }
 

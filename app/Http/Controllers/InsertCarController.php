@@ -15,6 +15,49 @@ use Image;
 
 class InsertCarController extends Controller
 {
+    public function mycars()
+    {
+        $datacar = Cars::where('driver_id', Auth::id())->get();
+        foreach($datacar as $car){
+            if($car->type == 1){
+                $car->type = "Sedan";
+            }
+            else if($car->type == 2){
+                $car->type = "AUV";
+            }
+            else{
+                $car->type = "Van";
+            }
+        }
+        foreach($datacar as $car2){
+            if($car2->verification_status == 1){
+                $car2->verification_status = "Verified";
+            }
+            else{
+                $car2->verification_status = "Unverified";
+            }
+        }
+        return view('drivers.my-cars', compact('datacar'));
+    }
+
+    public function getcar($id)
+    {
+        $datacar = Cars::where('driver_id', Auth::id())->where('car_id', $id)->first();
+        return view('drivers.insertcar', compact('datacar'));
+    }
+
+    public function showcar($id)
+    {
+        $datacar = Cars::where('driver_id', Auth::id())->where('car_id', $id)->first();
+        return view('drivers.insertcar', compact('datacar'));
+    }
+
+    public function deletecar($id)
+    {
+        $datacar = Cars::where('driver_id', Auth::id())->where('car_id', $id)->delete();
+        return back()->with('message', 'Car Deleted Successfully!');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,12 +65,7 @@ class InsertCarController extends Controller
      */
     public function index()
     {
-        $datacar = DB::table('cars')
-            ->join('users','users.id', '=', 'cars.driver_id')
-            ->select('cars.*','users.id','users.name')
-            ->where('driver_id','=', Auth::user()->id)
-            ->first();
-
+        $datacar = "";
         return view('drivers.insertcar', compact('datacar'));
     }
     /**
@@ -44,6 +82,7 @@ class InsertCarController extends Controller
         $model = $request->get('model');
         $type = $request->get('type');
         $capacity = $request->get('capacity');
+        $plate = $request->get('plate_num');
         $driver_id = Auth::id();
 
         if ($file != null) {
@@ -58,9 +97,11 @@ class InsertCarController extends Controller
                 'make'=> $make,
                 'model'=> $model,
                 'type' => $type,
+                'plate_number' => $plate,
                 'capacity' => $capacity,
                 'image' => $contents,
                 'driver_id' => $driver_id,
+                'verification_status' => '2',
             ]
         );
 
@@ -75,12 +116,13 @@ class InsertCarController extends Controller
                 'make'=> $make,
                 'model'=> $model,
                 'type' => $type,
+                'plate_number' => $plate,
                 'capacity' => $capacity,
-                'driver_id' => $driver_id,
+                'verification_status' => '2',
             ]
         );
         }
-        
-       return redirect()->to('driver/insertcar')->with('message', 'Updated Car Details Successfully!');
+        $datacar = Cars::where('driver_id', Auth::id())->latest('car_id')->first();
+        return view('drivers.insertcar', compact('datacar'))->with('message', 'Updated Car Details Successfully!');
     }
 }

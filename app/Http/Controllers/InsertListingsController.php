@@ -22,7 +22,7 @@ class InsertListingsController extends Controller
         $cities = Cities::select('*')->get();
         $uid = Auth::id();
         $listings = Listings::where('driver_id', '=', $uid)->first();
-        $cars = Cars::where('driver_id', '=', $uid)->first();
+        $cars = Cars::where('driver_id', '=', $uid)->where('verification_status', 1)->get();
         return view('drivers.insertlist', compact('listings', 'cities', 'cars'));
     }
 
@@ -35,7 +35,8 @@ class InsertListingsController extends Controller
     public function store(Request $request)
     {
         $uid = Auth::id();
-        $car_id = Cars::where('driver_id', '=', $uid)->value('car_id');
+        $car_id = $request->get('car_id');
+        $listing_id = $request->get('listing_id');
 
         $file = $request->file('image');
         $listing_title = $request->get('listing_title');

@@ -1,9 +1,9 @@
 @extends('layouts.l-admin')
-@section('pagename', 'Announcements')
+@section('pagename', 'Accounts')
 
 @section('content')
 <div class="container">
-        <h3>Add Announcements</h3>
+        <h3>Accounts</h3>
         <hr>
         <div class="col-md-12">
             <div class="card card-body">
@@ -12,8 +12,8 @@
                 <label>Announcement Title</label>
                 <input type="text" class="form-control" id="title" name="title">
                 <br>
-                <label>Announcement Text</label>
-                <input type="textarea" class="form-control w-100" id="announcement" name="announcement">
+                <label>Announcement Title</label>
+                <input type="textarea" class="form-control" id="announcement" name="announcement">
                 <br>
                 <label>Target User</label>
                 <select id="user" name="user" class="custom-select">
