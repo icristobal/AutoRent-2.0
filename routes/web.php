@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 			#Car Management
 			Route::resource('/insertcar','InsertCarController');
+			Route::post('/verify-car', 'InsertCarController@verify')->name('verify');
 			Route::get('/my-cars/{id}','InsertCarController@getcar')->name('viewcar');
 			Route::post('/my-cars/{id}','InsertCarController@deletecar')->name('deletecar');
 
@@ -52,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/my-transactions','TxnHistoryController@driver')->name('driver-txn');
 			Route::get('/changepass','DriverProfileController@showChangePassword')->name('changepass');
 			Route::post('/changePassword','DriverProfileController@changePassword')->name('changePassword');
-			Route::post('/profilepic','ProfilePicController@updatepic')->name('updatepic');
+			Route::post('/profilepic','ProfilePicController@updatepic')->name('updatepic2');
 			Route::get('/profilepic','ProfilePicController@driverShow')->name('dpage-show');
 
 			Route::get('/my-profile/update/', [
