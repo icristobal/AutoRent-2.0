@@ -20,11 +20,16 @@
         <div class="sidebar-heading">
             Actions
         </div>
-        <li class="nav-item @yield('car-manage-link')">
+        <li class="nav-item @yield('announcements-link')">
             <a class="nav-link" href="{{ route('announcements.index') }}">
                 <i class="fas fa-car"></i>
                 <span>Add Announcements</span></a>
         </li>
+        <li class="nav-item @yield('verification-link')">
+                <a class="nav-link" href="{{ route('verification.index') }}">
+                    <i class="fas fa-car"></i>
+                    <span>Verify Driver Vehicles</span></a>
+            </li>
     </ul>
     <!-- End of Sidebar -->
     <!-- Content Wrapper -->

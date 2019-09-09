@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::prefix('admin')->group(function() { 
 			Route::get('/home', 'AdminController@index')->name('admin-home');
 			Route::resource('/announcements','AdminAnnouncementController');
+			Route::resource('/verification','AdminVerificationController');
 		});
 	});
 
