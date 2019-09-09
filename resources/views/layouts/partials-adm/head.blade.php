@@ -3,7 +3,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>{{ config('app.name') }} Driver Portal | @yield('pagename', 'Page')</title>
+<title>{{ config('app.name') }} Admin Portal | @yield('pagename', 'Page')</title>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
