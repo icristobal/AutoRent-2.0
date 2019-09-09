@@ -1,7 +1,7 @@
 @extends('layouts.l-driver')
 @section('pagename', 'My Profile')
 
-@section('content')
+@section('content') 
 <div class="container">
 
     @if(session()->has('message'))
@@ -16,16 +16,16 @@
     <hr class="w-100">
     <div class="card w-100">
         <div class="card-body">
-            <form method="post" action="{{ route('updatepic') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('updatepic2') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                        <img @if($me != null) src="data:image/png;base64,{{ chunk_split(base64_encode($me->display_image)) }}" @endif width="300" height="200">
-                        <br><br>
-                        <input type="file" name="image" id="image" class="form-group">
-                    </div>
+                    <img @if($me != null) src="data:image/png;base64,{{ chunk_split(base64_encode($me->display_image)) }}" @endif width="300" height="200">
+                    <br><br>
+                    <input type="file" name="image" id="image" class="form-group">
+                </div>
                     
                 <div class="form-group">
-                    <input type="submit" name="send" class="btn btn-info text-white" value="Update My Profile Photo" />
+                    <input type="submit" name="send" class="btn btn-primary text-white" value="Update My Profile Photo">
                 </div>
             </form>
         </div>
