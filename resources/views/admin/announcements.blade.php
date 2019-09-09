@@ -1,6 +1,8 @@
 @extends('layouts.l-admin')
 @section('pagename', 'Announcements')
 
+@section('announcements-link', 'active')
+
 @section('content')
 <div class="container">
         <h3>Add Announcements</h3>

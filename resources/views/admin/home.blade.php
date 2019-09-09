@@ -1,6 +1,8 @@
 @extends('layouts.l-admin')
 @section('pagename', 'Home')
 
+@section('home-link', 'active')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
