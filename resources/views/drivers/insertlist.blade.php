@@ -59,7 +59,7 @@
                     @endif />
             </div>
             <div class="form-group">
-                <label class="font-weight-bold">Select Vehicle</label>
+                <label class="font-weight-bold">Select Vehicle (Verified Only)</label>
                 <select class="form-control" id="car_id" name="car_id">
                     @if($listings != null)
 
@@ -87,14 +87,8 @@
                 <br><br>
                 <input type="file" name="image" id="image" class="form-group">
             </div>
-            <div class="form-group">
-                <label class="font-weight-bold">Verification Image (Your Car's OR/CR + Driver's License)</label><br>
-                @if($listings !=null)<p class="text-danger font-italic">WARNING: Any Changes to this record will requre verification
-                        again.</p>@endif
-                <input type="file" name="verification_img" id="verification_img" class="form-group">
-                </div>
             <div class="form-group" align="center">
-                <input type="submit" name="send" class="btn btn-info" value="Send" />
+                <input type="submit" name="send" class="btn btn-primary text-white" value="Send" />
             </div>
         </form>
         @endif
