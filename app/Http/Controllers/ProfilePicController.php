@@ -25,12 +25,11 @@ class ProfilePicController extends Controller
         $uid = Auth::id();
         $file = $request->file('image');
         $contents = $file->openFile()->fread($file->getSize());
-
         User::updateOrCreate(
             [
                  'id'=>$uid,
-             ],
-             [
+            ],
+            [
                  'display_image'=>$contents,
             ]
         );
