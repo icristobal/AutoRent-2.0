@@ -46,6 +46,17 @@ class InsertCarController extends Controller
         return view('drivers.insertcar', compact('datacar'));
     }
 
+    public function verify(Request $request)
+    {
+        $file = $request->file('verification_img');
+        $contents = $file->openFile()->fread($file->getSize());
+        $mycar = Cars::find($request->get('car_id'));
+        $mycar->verification_img = $contents;
+        $mycar->save();
+
+        return back()->with('message', 'Successfully submitted verification. Please wait for the verification of the Administrators. Thank You!');
+    }
+
     public function showcar($id)
     {
         $datacar = Cars::where('driver_id', Auth::id())->where('car_id', $id)->first();
@@ -87,7 +98,7 @@ class InsertCarController extends Controller
 
         if ($file != null) {
             $contents = $file->openFile()->fread($file->getSize());
-            Cars::updateOrCreate(
+            $cars = Cars::updateOrCreate(
             [
                 'driver_id'=> $driver_id,
                 'car_id'=> $car_id,
@@ -106,7 +117,7 @@ class InsertCarController extends Controller
         );
 
         }else {
-            Cars::updateOrCreate(
+            $cars = Cars::updateOrCreate(
             [
                 'driver_id'=> $driver_id,
                 'car_id'=> $car_id,
@@ -122,7 +133,8 @@ class InsertCarController extends Controller
             ]
         );
         }
-        $datacar = Cars::where('driver_id', Auth::id())->latest('car_id')->first();
-        return view('drivers.insertcar', compact('datacar'))->with('message', 'Updated Car Details Successfully!');
+        $lastid = $cars->car_id;
+        $datacar = Cars::where('driver_id', Auth::id())->where('car_id', $lastid)->first();
+        return redirect()->route('viewcar', ['id' => $lastid])->with('message', 'Updated Car Details Successfully!');
     }
 }

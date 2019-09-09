@@ -38,13 +38,13 @@
                 <td>
                    <form method="get" action="{{ route('viewcar', $datacar->car_id) }}">
                         @csrf
-                        <button type="submit" class="btn btn-success float-left m-auto">
+                        <button type="submit" class="btn btn-success float-left">
                             Edit Car
                         </button>
                     </form>
                     <form method="post" action="{{ route('deletecar', $datacar->car_id) }}">
                             @csrf
-                            <button type="submit" class="btn btn-danger float-left m-auto">
+                            <button type="submit" class="btn btn-danger float-right m-auto">
                                 Delete Car
                             </button>
                         </form> 
