@@ -4,21 +4,25 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in! (Admin)
-                </div>
-            </div>
-        </div>
+    <h3>Verify Driver Vehicles</h3>
+    <hr>
+    <div class="card card-body">
+        <table class="table">
+            <tr>
+                <td class="font-weight-bold">ID</td>
+                <td class="font-weight-bold">Vehicle</td>
+                <td class="font-weight-bold">Owner</td>
+                <td class="font-weight-bold">Action</td>
+            </tr>
+            @foreach($datacar as $datacar)
+            <tr>
+                <td>{{ $datacar->car_id }}</td>
+                <td>{{ $datacar->make }} {{ $datacar->model }}</td>
+                <td>{{ $datacar->driver_id }}</td>
+                <td></td>
+            </tr>
+            @endforeach
+        </table>
     </div>
 </div>
 @endsection

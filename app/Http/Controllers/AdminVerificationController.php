@@ -10,7 +10,8 @@ class AdminVerificationController extends Controller
 
     public function index()
     {
-        return view('admin.verification');
+        $datacar = Cars::where('verification_status', 2)->whereNotNull('verification_img')->get();
+        return view('admin.verification', compact('datacar'));
     }
 
     public function store(Request $request)
