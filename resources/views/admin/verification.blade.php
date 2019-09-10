@@ -14,14 +14,28 @@
                 <td class="font-weight-bold">Owner</td>
                 <td class="font-weight-bold">Action</td>
             </tr>
+            @if($datacar->isEmpty())
+            <tr> 
+                <td colspan="4">No Unverified Vehicles</td>
+            </tr>
+            @else
+
             @foreach($datacar as $datacar)
             <tr>
                 <td>{{ $datacar->car_id }}</td>
                 <td>{{ $datacar->make }} {{ $datacar->model }}</td>
                 <td>{{ $datacar->driver_id }}</td>
-                <td></td>
+                <td>
+                    <form method="get" action="{{ route('showcar', $datacar->car_id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-success float-left">
+                            Edit Car
+                        </button>
+                    </form>
+                </td>
             </tr>
             @endforeach
+            @endif
         </table>
     </div>
 </div>

@@ -18,4 +18,25 @@ class AdminVerificationController extends Controller
     {
         //
     }
+
+    public function show($id){
+        $datacar = Cars::where('car_id', $id)->first();
+        return view('admin.cardetails', compact('datacar'));
+    }
+
+    public function approveVehicle($id){
+
+        $datacar = Cars::where('car_id', $id)->first();
+        $datacar->verification_status = '1';
+        $datacar->save();
+        return back()->with('message', 'Approved.');
+    }
+
+    public function denyVehicle($id){
+
+        $datacar = Cars::where('car_id', $id)->first();
+        $datacar->verification_status = '2';
+        $datacar->save();
+        return back()->with('message', 'Vehicle Denied.');
+    }
 }

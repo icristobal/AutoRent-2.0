@@ -43,11 +43,11 @@
                         </button>
                     </form>
                     <form method="post" action="{{ route('deletecar', $datacar->car_id) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-danger float-right m-auto">
-                                Delete Car
-                            </button>
-                        </form> 
+                        @csrf
+                        <button type="submit" class="btn btn-danger float-right m-auto">
+                            Delete Car
+                        </button>
+                    </form> 
                 </td>
             </tr>
             @endforeach

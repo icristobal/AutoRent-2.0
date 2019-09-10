@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/home', 'AdminController@index')->name('admin-home');
 			Route::resource('/announcements','AdminAnnouncementController');
 			Route::resource('/verification','AdminVerificationController');
+
+			Route::post('/verification/approve/{id}', 'AdminVerificationController@approveVehicle')->name('approveVerify');
+			Route::get('/verification/show/{id}', 'AdminVerificationController@show')->name('showcar');
 		});
 	});
 
