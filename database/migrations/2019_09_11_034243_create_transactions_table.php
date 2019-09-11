@@ -14,12 +14,16 @@ class CreateTransactionsTable extends Migration {
 	{
 		Schema::create('transactions', function(Blueprint $table)
 		{
-			$table->bigInteger('txn_id')->unsigned()->primary();
+			$table->bigInteger('txn_id', true)->unsigned();
 			$table->bigInteger('listing_id')->unsigned()->index('listing_id');
 			$table->bigInteger('passenger_id')->unsigned()->index('passenger_id');
 			$table->string('rent_start', 50);
 			$table->string('rent_end', 50);
-			$table->string('destionation', 100);
+			$table->string('pickup_address', 100);
+			$table->string('dropoff_address', 100);
+			$table->boolean('hasDriver');
+			$table->boolean('status');
+			$table->timestamps();
 		});
 	}
 
