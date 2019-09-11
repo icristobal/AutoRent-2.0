@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Cities;
-use App\Listings;
-use App\Cars;
 use Illuminate\Http\Request;
-use Auth;
 use DB;
+use Auth;
+use App\Cities;
+use App\Cars;
+use App\Listings;
 
-class InsertListingsController extends Controller
+class InsertAListingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,22 +18,21 @@ class InsertListingsController extends Controller
      */
     public function index()
     {
-        $cities = Cities::select('*')->get();
         $uid = Auth::id();
-        $listings = Listings::where('driver_id', '=', $uid)->first();
+        $cities = Cities::select('*')->get();
         $cars = Cars::where('driver_id', '=', $uid)->where('verification_status', 1)->get();
-        return view('drivers.insertlist', compact('listings', 'cities', 'cars'));
+        return view('drivers.insertalisting',compact('cars','cities'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        $uid = Auth::id();
+
+      $uid = Auth::id();
         $car_id = $request->get('car_id');
         $listing_id = $request->get('listing_id');
 
@@ -50,7 +48,8 @@ class InsertListingsController extends Controller
 
             Listings::updateOrCreate(
                [
-                    'driver_id'=>$uid,
+                    
+                    'listing_id'=>$listing_id,
                 ],
                 [
                     'listing_title'=>$listing_title,
@@ -60,14 +59,17 @@ class InsertListingsController extends Controller
                     'car_id'=>$car_id,
                     'listing_image'=>$contents,
                     'listing_status'=>$listing_status, 
+                    'driver_id'=>$uid
             ]);
            
         } else{
             Listings::updateOrCreate(
                [
-                    'driver_id'=>$uid,
+                    
+                    'listing_id'=>$listing_id,
                 ],
                 [
+                    'driver_id'=>$uid,
                     'listing_title'=>$listing_title,
                     'rate'=>$rate,
                     'notes'=>$notes,
@@ -75,17 +77,8 @@ class InsertListingsController extends Controller
                     'city_id'=>$city_id,
                     'listing_status'=>$listing_status, 
             ]);
-          
-        }
-         return redirect('driver/insertlist')->with('success','Successfully Updated Listing!');
-    }
-
-    public function show($id)
-    {
-          $cities = Cities::select('*')->get();
-        $uid = Auth::id();
-        $listings = Listings::where('driver_id', '=', $uid)->first();
-        $cars = Cars::where('driver_id', '=', $uid)->where('verification_status', 1)->get();
-        return view('drivers.insertlist', compact('listings', 'cities', 'cars'));
+          }
+          return redirect('driver/ListingList')->with('success','Successfully Updated Listing!');
+            
     }
 }

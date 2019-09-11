@@ -36,9 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'App\Http\Middleware\DriverMiddleware'], function () {
 		Route::prefix('driver')->group(function() {
 			Route::get('/home', 'DriverController@index')->name('driver-home');
-			Route::resource('/insertlist','InsertListingsController');
 			Route::resource('/my-jobs','DriverJobsController');
 			Route::get('/my-cars', 'InsertCarController@mycars');
+
+			#Listing Management
+			Route::resource('/insertlist','InsertListingsController');
+			Route::resource('/listinglist','ListingListController');
+			Route::resource('/insertalisting','InsertAListingController');
 
 			#Car Management
 			Route::resource('/insertcar','InsertCarController');

@@ -26,7 +26,7 @@
                 <span>My Cars</span></a>
         </li>
         <li class="nav-item @yield('ad-manage-link')">
-            <a class="nav-link" href="{{ url('driver/insertlist') }}">
+            <a class="nav-link" href="{{ url('driver/listinglist') }}">
                 <i class="fas fa-car"></i>
                 <span>My Listing</span></a>
         </li>
