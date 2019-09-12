@@ -41,8 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 			#Listing Management
 			Route::resource('/insertlist','InsertListingsController');
-			Route::resource('/listinglist','ListingListController');
-			Route::resource('/insertalisting','InsertAListingController');
+			Route::resource('/my-listings','ListingListController');
+			Route::get('/my-listings/{id}','InsertListingsController@showlist')->name('showlist');
 
 			#Car Management
 			Route::resource('/insertcar','InsertCarController');
