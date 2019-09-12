@@ -27,6 +27,11 @@
                 <td class="font-weight-bold">Verification Status</td>
                 <td class="font-weight-bold w-25">Action</td>
             </tr>
+            @if($datacar->isEmpty())
+            <tr>
+                <td colspan="7">No Cars. Register one now!</td>
+            </tr>
+            @else
             @foreach($datacar as $datacar)
             <tr>
                 <td> {{ $datacar->car_id }} </td>
@@ -51,6 +56,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </table>
     </div>
 </div>
