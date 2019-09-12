@@ -21,8 +21,13 @@ class InsertListingsController extends Controller
     {
         $cities = Cities::select('*')->get();
         $uid = Auth::id();
-        $listings = Listings::where('driver_id', '=', $uid)->first();
-        $cars = Cars::where('driver_id', '=', $uid)->where('verification_status', 1)->get();
+        $listings = "";
+        $usedcar = Listings::where('driver_id', $uid)->get()->pluck('car_id')->toArray();
+        $cars = Cars::where('driver_id', '=', $uid)
+            ->where('verification_status', 1)
+            ->whereNotIn('car_id', $usedcar)
+            ->orWhereNull('car_id')
+            ->get();
         return view('drivers.insertlist', compact('listings', 'cities', 'cars'));
     }
 
@@ -48,9 +53,10 @@ class InsertListingsController extends Controller
         if ($file != null) {
             $contents = $file->openFile()->fread($file->getSize());
 
-            Listings::updateOrCreate(
-               [
-                    'driver_id'=>$uid,
+            $listings = Listings::updateOrCreate(
+                [
+
+                    'car_id'=>$car_id,
                 ],
                 [
                     'listing_title'=>$listing_title,
@@ -63,11 +69,13 @@ class InsertListingsController extends Controller
             ]);
            
         } else{
-            Listings::updateOrCreate(
-               [
-                    'driver_id'=>$uid,
+            $listings = Listings::updateOrCreate(
+                [
+
+                    'car_id'=>$car_id,
                 ],
                 [
+                    'driver_id'=>$uid,
                     'listing_title'=>$listing_title,
                     'rate'=>$rate,
                     'notes'=>$notes,
@@ -77,15 +85,8 @@ class InsertListingsController extends Controller
             ]);
           
         }
-         return redirect('driver/insertlist')->with('success','Successfully Updated Listing!');
-    }
-
-    public function show($id)
-    {
-          $cities = Cities::select('*')->get();
-        $uid = Auth::id();
-        $listings = Listings::where('driver_id', '=', $uid)->first();
-        $cars = Cars::where('driver_id', '=', $uid)->where('verification_status', 1)->get();
-        return view('drivers.insertlist', compact('listings', 'cities', 'cars'));
+        $lastid = $listings->listing_id;
+        $datalist = Listings::where('driver_id', Auth::id())->where('listing_id', $lastid)->first();
+        return redirect()->route('showlist', ['id' => $lastid])->with('message', 'Updated Listing Details Successfully!');
     }
 }

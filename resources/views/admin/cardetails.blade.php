@@ -11,7 +11,10 @@
     </div>
     @endif
 
-    <h3>Verify Driver Vehicles</h3>
+    <h3 class="float-left">Verify Driver Vehicles</h3>
+    <a href="{{ url('admin/verification') }}" class="btn btn-primary float-right">
+        <i class="fa fa-step-backward"></i> Back</a>
+    <br><br>
     <hr>
     <div class="card card-body">
         <div class="container-box col-md-10">
