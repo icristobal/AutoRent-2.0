@@ -36,6 +36,7 @@ class AdminVerificationController extends Controller
 
         $datacar = Cars::where('car_id', $id)->first();
         $datacar->verification_status = '2';
+        $datacar->verification_img='';
         $datacar->save();
         return back()->with('message', 'Vehicle Denied.');
     }

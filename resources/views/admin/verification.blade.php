@@ -29,7 +29,7 @@
                     <form method="get" action="{{ route('showcar', $datacar->car_id) }}">
                         @csrf
                         <button type="submit" class="btn btn-success float-left">
-                            Edit Car
+                            Verify this Car
                         </button>
                     </form>
                 </td>
