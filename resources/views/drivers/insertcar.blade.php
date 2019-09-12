@@ -14,18 +14,21 @@
     @endif
 
     <h3 class="float-left">My Car</h3>
+    <br><br>
+    <a href="{{ url('driver/my-cars') }}" class="btn btn-primary float-left">
+        <i class="fa fa-step-backward"></i> Back</a>
     @if($datacar == null)
     @else
-    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal"
+    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal"
      @if($datacar->verification_img != null) disabled @endif>
-        Verify My Vehicle
+     <i class="fa fa-check"></i> Verify My Vehicle
     </button>
     @endif
     <br>
     <hr class="w-100 mt-4">
     <div class="card">
         <div class="card-body">
-            <div class="container-box col-md-10">
+            <div class="container-box col-12">
                 <form method="POST" action="{{ route('insertcar.store') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="car_id" @if($datacar !=null) value="{{$datacar->car_id}}" @endif hidden />
@@ -42,9 +45,9 @@
                             <label>Car Type</label>
                             <select class="form-control" id="type" default="" name="type">
                                 @if($datacar !=null)
-                                <option value="1" @if($datacar->make= 1) selected @else @endif>Sedan</option>
-                                <option value="2" @if($datacar->make = 2) selected @else @endif>AUV</option>
-                                <option value="3" @if($datacar->make = 3) selected @else @endif>Van</option>
+                                <option value="1" @if($datacar->make == 1) selected @else @endif>Sedan</option>
+                                <option value="2" @if($datacar->make == 2) selected @else @endif>AUV</option>
+                                <option value="3" @if($datacar->make == 3) selected @else @endif>Van</option>
                                 @else
                                 <option value="1">Sedan</option>
                                 <option value="2">AUV</option>
@@ -64,7 +67,7 @@
                             <br>
                             <img @if($datacar !=null)
                                 src="data:image/png;base64,{{ chunk_split(base64_encode($datacar->image)) }}" @endif
-                                width="300" height="200">
+                                width="320" height="240" class="border border-dark">
                             <br><br>
                             <input type="file" name="image" id="image" class="form-group">
                             <br>
