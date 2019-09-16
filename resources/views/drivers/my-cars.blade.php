@@ -1,7 +1,7 @@
 @extends('layouts.l-driver')
 @section('pagename', 'My Cars')
 
-@section('job-manage-link', 'active')
+@section('car-manage-link', 'active')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,8 @@
     @endif
 
     <h3 class="float-left">My Cars</h3>
-    <div class="float-right"><a class="btn btn-primary" href={{ url('/driver/insertcar') }}><i class="fa fa-plus"></i> Add Car</a></div>
+    <div class="float-right"><a class="btn btn-primary" href={{ url('/driver/insertcar') }}><i class="fa fa-plus"></i>
+            Add Car</a></div>
     <br>
     <hr class="w-100">
     <div class="card card-body">
@@ -41,23 +42,46 @@
                 <td> {{ $datacar->capacity }} seats </td>
                 <td> {{ $datacar->verification_status }} </td>
                 <td>
-                   <form method="get" action="{{ route('viewcar', $datacar->car_id) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-success float-left">
-                            Edit Car
+                    <div class="btn-group" role="group">
+                        <form method="get" action="{{ route('viewcar', $datacar->car_id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-success">
+                                Edit Car
+                            </button>
+                        </form>
+
+                        <button type="submit" class="btn btn-danger" data-toggle="modal"
+                            data-target="#myModal2">Delete
                         </button>
-                    </form>
-                    <form method="post" action="{{ route('deletecar', $datacar->car_id) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-danger float-right m-auto">
-                            Delete Car
-                        </button>
-                    </form> 
+                    </div>
                 </td>
             </tr>
             @endforeach
             @endif
         </table>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="float-left">Delete?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this Vehicle? This action can not be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="{{ route('deletecar', $datacar->car_id) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-danger float-right m-auto">
+                        Delete Car
+                    </button>
+                </form>
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 <div class="mt-lg-5"></div>
