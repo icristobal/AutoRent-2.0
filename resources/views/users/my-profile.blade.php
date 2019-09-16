@@ -32,11 +32,6 @@
             <input type="text" name="email" class="form-control" value="{{$me->email}}" id="contact">
         </div>
         <br />
-        <div class="form-group">
-            <label>Profile Image</label><br>
-            <input type="file" name="display_image" id="display_image">
-            <input type="hidden" name="_token"value="{{ csrf_token() }}">
-        </div>
         @endforeach
         <div class="form-group" align="center">
             <input type="submit" name="send" class="btn btn-info" value="Update My Profile" />
