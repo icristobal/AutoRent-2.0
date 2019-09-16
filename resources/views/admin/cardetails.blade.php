@@ -66,23 +66,25 @@
                         </div>
                         <br>
                         @if($datacar->verification_status != 1)
-                        <label>Actions: </label>
-                        <form method="POST" action="{{ route('approveVerify', $datacar->car_id) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-success">
-                                <i class="fa fa-check"></i> Approve Verification Application
-                            </button>
-                        </form>
+                        <div class="btn-group" role="group">
+                            <label>Actions: </label>
+                            <form method="POST" action="{{ route('approveVerify', $datacar->car_id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-check"></i> Approve Verification Application
+                                </button>
+                            </form>
 
-                        <form method="POST" action="{{ route('approveVerify', $datacar->car_id) }}">
+                            <form method="POST" action="{{ route('approveVerify', $datacar->car_id) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-times"></i> Reject Verifcation Application
                                 </button>
                             </form>
-                        @else
-                        <p class="alert-success"><i class="fa fa-check-circle m-3"></i> Vehicle is Verified</p>
-                        @endif
+                            @else
+                            <p class="alert-success"><i class="fa fa-check-circle m-3"></i> Vehicle is Verified</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
