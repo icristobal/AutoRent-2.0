@@ -65,7 +65,8 @@ class InsertListingsController extends Controller
                     'city_id'=>$city_id,
                     'car_id'=>$car_id,
                     'listing_image'=>$contents,
-                    'listing_status'=>$listing_status, 
+                    'listing_status'=>$listing_status,
+                    'availability'=>'1', 
             ]);
            
         } else{
@@ -81,7 +82,8 @@ class InsertListingsController extends Controller
                     'notes'=>$notes,
                     'car_id'=>$car_id,
                     'city_id'=>$city_id,
-                    'listing_status'=>$listing_status, 
+                    'listing_status'=>$listing_status,
+                    'availability'=>'1',  
             ]);
           
         }
