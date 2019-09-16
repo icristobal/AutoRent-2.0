@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::resource('/insertlist','InsertListingsController');
 			Route::resource('/my-listings','ListingListController');
 			Route::get('/my-listings/{id}','InsertListingsController@showlist')->name('showlist');
+			Route::post('/listinglist/{id}','ListingListController@deletelist')->name('deletelist');
 
 			#Car Management
 			Route::resource('/insertcar','InsertCarController');
