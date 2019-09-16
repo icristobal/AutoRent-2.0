@@ -19,7 +19,11 @@ class CreateCarsTable extends Migration {
 			$table->string('model', 30);
 			$table->boolean('type');
 			$table->integer('capacity');
+			$table->string('plate_number', 20);
 			$table->binary('image')->nullable();
+			$table->binary('verification_img')->nullable();
+			$table->boolean('verification_status')->default(2);
+			$table->boolean('availability')->default(2);
 			$table->bigInteger('driver_id')->unsigned()->index('driver_id');
 			$table->timestamps();
 		});
