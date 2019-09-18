@@ -18,7 +18,6 @@
                 <h4 class="card-text">PHP {{$posted->rate}}</h3>
                 <p class="card-text">{{$posted->notes}}</p>
                 <a href="{{ route('cardetails', $posted->listing_id) }}" class="btn btn-primary">View</a>
-                </a>
             </div>
         </div>
         @endforeach
