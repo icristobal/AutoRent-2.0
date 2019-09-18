@@ -82,7 +82,7 @@ class DriverJobsController extends Controller
         $transaction = Transactions::where('txn_id', '=', $id)->first();
         if($transaction)
         {
-            $listing->listing_status = '2';
+            $listing->listing_status = '1';
             $transaction->status = '4';
             $transaction->save();
             $listing->save();
