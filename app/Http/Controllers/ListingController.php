@@ -55,7 +55,7 @@ class ListingController extends Controller
         ->join('cars','cars.car_id','=','listings.car_id')
         ->join('cities','cities.city_id','=','listings.city_id')
         ->join('users','users.id','=','listings.driver_id')
-        ->select('listings.*','cars.*','users.*')
+        ->select('*')
         ->where('listing_id','=', $id)->first();
         //$existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '=', '4')->first();
         $existTxn = Transactions::where('passenger_id', '=', Auth::id())->where('status', '=', '2')->first();
