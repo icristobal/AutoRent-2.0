@@ -39,6 +39,7 @@ class ListingListController extends Controller
         $Listinglist = Listings::where('listing_id', $id)->delete();
         $available = Cars::find($id);
         $available->availability = '2';
+        $available->save();
         return back()->with('message', 'Listing Deleted Successfully!');
     }
 }
