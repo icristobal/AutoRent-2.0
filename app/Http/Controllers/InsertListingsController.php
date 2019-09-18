@@ -55,10 +55,10 @@ class InsertListingsController extends Controller
 
             $listings = Listings::updateOrCreate(
                 [
-
                     'car_id'=>$car_id,
                 ],
                 [
+                    'driver_id'=>$uid,
                     'listing_title'=>$listing_title,
                     'rate'=>$rate,
                     'notes'=>$notes,
@@ -72,7 +72,6 @@ class InsertListingsController extends Controller
         } else{
             $listings = Listings::updateOrCreate(
                 [
-
                     'car_id'=>$car_id,
                 ],
                 [

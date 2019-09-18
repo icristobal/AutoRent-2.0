@@ -32,12 +32,11 @@ class UserController extends Controller
     public function findcar()
     {
         $data = DB::table('listings')
-            ->join('users','users.id', '=', 'listings.driver_id',)
-            ->join('cars','cars.driver_id', '=', 'listings.driver_id')
-            ->join('cities','cities.city_id','=','listings.city_id')
-            ->select('listings.*','users.name','cars.*')
-            ->where('listings.listing_status', '1')
-            ->get();
+        ->join('cars','cars.car_id','=','listings.car_id')
+        ->join('cities','cities.city_id','=','listings.city_id')
+        ->join('users','users.id','=','listings.driver_id')
+        ->select('listings.*','cars.*','users.*')
+        ->where('listing_status', 1)->get();
         return view('findcar', compact('data'));
     }
 }
