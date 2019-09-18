@@ -54,6 +54,10 @@
                 <br>
                 <label>PHP {{$data->rate}}</label>
                 <br>
+                <label class="font-weight-bold">Destinations</label>
+                <br>
+                <label>{{$data->city}}</label>
+                <br>
                 <label class="font-weight-bold">Notes to Passenger</label>
                 <br>
                 <label>{{$data->notes}}</label>
