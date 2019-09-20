@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 			Route::post('/verification/approve/{id}', 'AdminVerificationController@approveVehicle')->name('approveVerify');
 			Route::get('/verification/show/{id}', 'AdminVerificationController@show')->name('showcar');
+
+			#User Management
+			Route::resource('/user-management','AccountManageController');
+			
 		});
 	});
 

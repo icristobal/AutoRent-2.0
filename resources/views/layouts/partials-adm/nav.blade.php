@@ -27,9 +27,14 @@
         </li>
         <li class="nav-item @yield('verification-link')">
                 <a class="nav-link" href="{{ route('verification.index') }}">
-                    <i class="fas fa-car"></i>
+                    <i class="fas fa-check"></i>
                     <span>Verify Driver Vehicles</span></a>
-            </li>
+        </li>
+        <li class="nav-item @yield('usrm-link')">
+            <a class="nav-link" href="{{ route('user-management.index') }}">
+                <i class="fas fa-user"></i>
+                <span>User Management</span></a>
+        </li>
     </ul>
     <!-- End of Sidebar -->
     <!-- Content Wrapper -->

@@ -25,4 +25,3 @@
 
 <!-- Custom Scripts for all Pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}" defer></script>
-<script src="{{ asset('js/drv-btn.js') }}"></script>
